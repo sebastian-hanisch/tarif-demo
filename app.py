@@ -375,11 +375,6 @@ with st.expander("📐 Mathematische Formulierung"):
     st.markdown("Die **Pareto-Kurve** ersetzt die Nebenbedingung durch $R(x) \\ge f \\cdot R_{\\max}$ mit $f$ von 0 bis 1.")
 
 
-st.markdown("**War diese Demo hilfreich für Sie?**")
-fb1, fb2 = st.columns(2)
-fb1.button("👍 Ja", key="feedback_up", width="stretch")
-fb2.button("👎 Nein", key="feedback_down", width="stretch")
-
 st.markdown("---")
 st.caption(
     "Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – "
