@@ -7,7 +7,7 @@ Fall-Demo für die Website „Sebastian Hanisch – Operations Research und Mach
 
 ## Warum dieses Problem
 
-Welche Preise „richtig“ sind, hängt am Ziel, und die Ziele widersprechen sich: Nahe dem Erlösmaximum ist die Erlöskurve flach, die Fahrgastzahl nicht. Auf 40 synthetischen Netzen bringt der Erlös-optimale Zonentarif 108,8 ± 0,2 % des heutigen Erlöses, verliert aber 22,5 Prozentpunkte der Fahrten (77,5 ± 0,2 % von heute). Wer Fahrgäste will, braucht Subvention: Der Nulltarif ist erst ab dem 1,23-Fachen der heutigen Betriebskosten zulässig, das ist das 4,5-Fache der heutigen Subvention. Und der optimale Preis hängt an einer Annahme, die sich nicht messen lässt (der Preisempfindlichkeit), der Erlös dagegen kaum.
+Welche Preise „richtig“ sind, hängt am Ziel, und die Ziele widersprechen sich: Nahe dem Erlösmaximum ist die Erlöskurve flach, die Fahrgastzahl nicht. Auf 40 synthetischen Netzen bringt der Erlös-optimale Zonentarif 108,8 ± 0,2 % des heutigen Erlöses, verliert aber 22,5 Prozentpunkte der Fahrten (77,5 ± 0,2 % von heute). Wer Fahrgäste will, braucht Subvention: Der Nulltarif ist erst ab dem 1,23-Fachen der heutigen Betriebskosten zulässig, das ist, als Mittel der Verhältnisse je Netz, das 4,5-Fache der heutigen Subvention. Und der optimale Preis hängt an einer Annahme, die sich nicht messen lässt (der Preisempfindlichkeit), der Erlös dagegen kaum.
 
 ## Modell
 

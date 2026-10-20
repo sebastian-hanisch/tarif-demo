@@ -78,6 +78,17 @@ Nachbarn: das feste Liniennetz der [ÖPNV-Liniennetz-Demo](https://sebastianhani
 """
 )
 
+# erklaerseite:einfach:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/tarif-erklaert.json, nicht von Hand ändern)
+with st.expander("💬 In einfachen Worten"):
+    st.markdown(
+        """
+Ein **Zonentarif** hat zwei Preise: die Einzelkarte und die Monatskarte. Die Demo fragt, welche Preise richtig sind, und die Antwort hängt davon ab, was man erreichen will. Wer die Einnahmen maximiert, wer den Gewinn maximiert und wer möglichst viele Fahrgäste befördern will, verlangt drei verschiedene Preise. Jede Person im Modell entscheidet sich für Einzelkarte, Monatskarte oder Auto, und zwar nur mit Wahrscheinlichkeiten: Je günstiger eine Alternative gegenüber den anderen ist, desto öfter wird sie gewählt. Die Demo zeigt, was ein falsches Ziel kostet und wie stark der beste Preis an einer Annahme hängt, die sich nicht messen lässt: der Preisempfindlichkeit. Es ist ein stark vereinfachtes Modell mit erfundenen Parametern auf künstlichen Netzen.
+
+[Ausführlich und verständlich erklärt, mit Fachteil](https://sebastianhanisch.net/tarif-erklaert.html)
+        """
+    )
+# erklaerseite:einfach:end
+
 st.caption("🔗 Die Adresszeile oben spiegelt Ihre aktuelle Konfiguration wider – einfach kopieren, um ein Szenario zu teilen.")
 
 load_permalink_settings()
@@ -221,7 +232,7 @@ sb = Rs.subsidy(sc)
 st.plotly_chart(build_subsidy_mean(sb["raster"], sb["Stoday"]["mean"], sb["Snull"]["mean"], sb["Smin"]["mean"]), width="stretch", key="series_subsidy")
 st.markdown(
     f"Die kleinste Subvention, bei der Max-D zulässig ist, liegt bei {Rs.stat_text(sb['Smin'], 2)} × Betriebskosten (in manchen Netzen negativ: der Erlös deckt die Kosten ohne Zuschuss); heute sind es {Rs.stat_text(sb['Stoday'], 2)}; "
-    f"der **Nulltarif** ist ab {Rs.stat_text(sb['Snull'], 2)} zulässig, das ist das {Rs.stat_text(sb['Snull_over_Stoday'], 1)}-Fache der heutigen Subvention. Kurz unter dieser Schwelle (0,97-fach) bleibt der Preis der Monatskarte noch positiv, "
+    f"der **Nulltarif** ist ab {Rs.stat_text(sb['Snull'], 2)} zulässig, das ist, als Mittel der Verhältnisse je Netz, das {Rs.stat_text(sb['Snull_over_Stoday'], 1)}-Fache der heutigen Subvention. Kurz unter dieser Schwelle (0,97-fach) bleibt der Preis der Monatskarte noch positiv, "
     f"der Einzelkartenpreis ist schon null."
 )
 
@@ -363,6 +374,30 @@ nicht unter null fällt; ohne diese Bedingung wäre der Nulltarif immer optimal.
     )
 
 with st.expander("📐 Mathematische Formulierung"):
+    # erklaerseite:lesehilfe:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/tarif-erklaert.json, nicht von Hand ändern)
+    st.markdown(
+        r"""
+**Lesehilfe.** Gegeben sind ein Netz mit Haltepunkten, die Fahrten der Personen und der heutige Tarif. Gesucht sind die zwei Preise $x_s$ und $x_m$, die je Ziel (Erlös, Gewinn, Fahrten) am besten sind.
+
+| Symbol | Bedeutung |
+|---|---|
+| $a$, $P_a$ | Alternative (Einzelkarte, Monatskarte, Auto) und Wahrscheinlichkeit, sie zu wählen |
+| $V_a$ | Nutzen einer Alternative je Fahrt |
+| $\mu$ | Preisempfindlichkeit (Skalierung des Nutzens je Geldeinheit) |
+| $k$ | Fahrten einer Person im Monat |
+| $z$ | Zonenzahl der Verbindung (1 oder 2) |
+| $x_s$, $x_m$ | Preis der Einzelkarte und der Monatskarte |
+| $\lambda$, $\tau$ | Zeitwert und Fahrzeit |
+| $F$, $c$, $\ell$ | monatliche Fixkosten des Autos, Kosten je km, Weglänge |
+| $y_{st}$ | Auto-Zuschlag des Paares, so gesetzt, dass der heutige Auto-Anteil herauskommt |
+| $w_{stk}$ | Personen eines Paares mit $k$ Fahrten |
+| $R$, $T$, $C$ | Erlös, Fahrten im ÖV, Betriebskosten |
+| $S$ | Subvention (in Vielfachen der heutigen Betriebskosten) |
+
+[Schritt für Schritt erklärt, mit Herleitung und Literatur](https://sebastianhanisch.net/tarif-erklaert.html#fachleute)
+        """
+    )
+    # erklaerseite:lesehilfe:end
     st.markdown("Eine Person im Paar $s$–$t$ mit $k$ Fahrten im Monat wählt $a \\in \\{\\text{Einzel}, \\text{Monat}, \\text{Auto}\\}$ mit der Wahrscheinlichkeit")
     st.latex(r"P_a = \frac{e^{\mu V_a}}{\sum_b e^{\mu V_b}}")
     st.markdown("Nutzen je Fahrt für die Zonenzahl $z$ (1 oder 2), Preise $x = (x_s, x_m)$, Fahrzeit $\\tau$ und Zeitwert $\\lambda$:")
